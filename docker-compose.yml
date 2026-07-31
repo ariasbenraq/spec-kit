@@ -1,0 +1,15 @@
+services:
+  spec-kit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spec-kit
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./projects:/workspace/projects
+      - ~/.gitconfig:/root/.gitconfig:ro
+    environment:
+      - SPECIFY_UPGRADE_TIMEOUT_SECS=300
+    working_dir: /workspace/projects
+    command: /bin/bash
